@@ -1,0 +1,18 @@
+%h1 Create vanity URL
+
+=form_for :url do |f|
+  %p
+    %strong Source
+    = f.text_field :source
+  %p
+    %strong Target
+    = f.text_field :target
+  %p
+    %strong Your name
+    = f.text_field :name
+  %p
+    If applicable,
+    %strong name of stakeholder
+    = f.text_field :stakeholder
+
+  = f.submit "Send creation request"
