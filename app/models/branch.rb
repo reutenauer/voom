@@ -4,7 +4,7 @@ require 'fileutils'
 class Branch
   @@tmpdir = Dir.mktmpdir
 
-  def self.create
+  def self.add_vanity_url(source, target)
     FileUtils.chdir @@tmpdir
     `git clone ssh://git@stash.atlassian.roh.org.uk/web/server-configuration---content.git`
     FileUtils.chdir 'server-configuration---content'

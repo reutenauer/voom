@@ -10,7 +10,7 @@ describe Branch do
     # end
 
     it "works" do
-      Branch.create
+      Branch.add_vanity_url("/flyingpigs", "http://www.roh.org.uk/productions/the-flying-pigs-by-ebenezer-scrooge")
     end
   end
 end
