@@ -18,30 +18,39 @@ class Branch
 
     conffile = 'etc/apache2/sites-available/default.conf'
     oldconf = File.read(conffile)
-    newconf = File.open(conffile, 'w')
+
+    voomstart = "# ==== Managed by the Voom below ===="
+    voomstop = "# ==== Managed by the Voom above ===="
 
     state = PREVOOM
     prevoom = ""
     postvoom = ""
     oldconf.each_line do |line|
-      if state == PREVOOM || state == POSTVOOM
-        newconf.puts line
+      if state == PREVOOM
+        prevoom += line
       elsif state == INVOOM
-        Redirect.all.each do |redirect|
-          l = redirect.source.length
-          padding = if l < 23 then ' ' * (23 - l) else ' ' end
-          puts "DEBUG #{redirect.source} #{redirect.source.length}"
-          newconf.puts "        Redirect 301 #{redirect.source}#{padding}#{redirect.target}"
-        end
+      elsif state == POSTVOOM
+        postvoom += line
       end
 
-      if line =~ /# ==== Managed by the Voom below ====/
+      if line =~ /#{voomstart}/
         state = INVOOM
-      elsif line =~ /# ==== Managed by the Voom above ====/
-        newconf.puts line
+      elsif line =~ /#{voomstop}/
         state = POSTVOOM
       end
     end
+
+    newconf = File.open(conffile, 'w')
+    newconf.write prevoom
+    newconf.write voomstart
+    Redirect.all.each do |redirect|
+      l = redirect.source.length
+      padding = if l < 23 then ' ' * (23 - l) else ' ' end
+      puts "DEBUG #{redirect.source} #{redirect.source.length}"
+      newconf.puts "        Redirect 301 #{redirect.source}#{padding}#{redirect.target}"
+    end
+    newconf.write voomstop
+    newconf.write postvoom
 
     # conf = File.open(conffile, 'w')
     # conf.puts "        Redirect 301 #{source}   #{target}"
