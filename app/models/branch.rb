@@ -3,6 +3,9 @@ require 'fileutils'
 
 class Branch
   @@tmpdir = Dir.mktmpdir
+  PREVOOM = 0
+  INVOOM = 1
+  POSTVOOM = 2
 
   def self.add_vanity_url(source, target)
     puts @@tmpdir
@@ -17,32 +20,28 @@ class Branch
     oldconf = File.read(conffile)
     newconf = File.open(conffile, 'w')
 
+    state = PREVOOM
     prevoom = ""
-    oldconf.each_line do |line|
-      prevoom += line
-      prevoom += "\n"
-      break if line =~ /# ==== Managed by the Voom below ====/
-    end
-
-    oldconf.each_line do |line|
-      break if line =~ /# ==== Managed by the Voom above ====/
-    end
-
     postvoom = ""
     oldconf.each_line do |line|
-      postvoom += line
-      postvoom += "\n"
-      newconf.puts line
-    end
+      if state == PREVOOM || state == POSTVOOM
+        newconf.puts line
+      elsif state == INVOOM
+        Redirect.all.each do |redirect|
+          l = redirect.source.length
+          padding = if l < 23 then ' ' * (23 - l) else ' ' end
+          puts "DEBUG #{redirect.source} #{redirect.source.length}"
+          newconf.puts "        Redirect 301 #{redirect.source}#{padding}#{redirect.target}"
+        end
+      end
 
-    newconf.write prevoom
-    Redirect.all.each do |redirect|
-      l = redirect.source.length
-      padding = if l < 23 then ' ' * (23 - l) else ' ' end
-      puts "DEBUG #{redirect.source} #{redirect.source.length}"
-      newconf.puts "        Redirect 302 #{redirect.source}#{padding}#{redirect.target}"
+      if line =~ /# ==== Managed by the Voom below ====/
+        state = INVOOM
+      elsif line =~ /# ==== Managed by the Voom above ====/
+        newconf.puts line
+        state = POSTVOOM
+      end
     end
-    newconf.write postvoom
 
     # conf = File.open(conffile, 'w')
     # conf.puts "        Redirect 301 #{source}   #{target}"
