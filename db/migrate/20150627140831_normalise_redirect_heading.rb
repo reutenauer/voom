@@ -3,7 +3,7 @@ class NormaliseRedirectHeading < ActiveRecord::Migration
     remove_column :redirects, :heading, :string
 
     change_table :redirects do |t|
-      t.references :headings
+      t.references :heading
     end
 
     create_table :headings do |t|
