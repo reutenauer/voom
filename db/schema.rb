@@ -11,19 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150627140831) do
+ActiveRecord::Schema.define(version: 20150627161521) do
 
   create_table "headings", force: :cascade do |t|
-    t.string  "title"
-    t.integer "rank"
+    t.string   "title"
+    t.integer  "rank"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "redirects", force: :cascade do |t|
     t.string   "source"
     t.string   "target"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "headings_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "heading_id"
   end
 
 end
