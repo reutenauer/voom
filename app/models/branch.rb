@@ -42,14 +42,13 @@ class Branch
 
     newconf = File.open(conffile, 'w')
     newconf.write prevoom
-    newconf.write voomstart
     Redirect.all.each do |redirect|
       l = redirect.source.length
       padding = if l < 23 then ' ' * (23 - l) else ' ' end
       puts "DEBUG #{redirect.source} #{redirect.source.length}"
       newconf.puts "        Redirect 301 #{redirect.source}#{padding}#{redirect.target}"
     end
-    newconf.write voomstop
+    newconf.write ' ' * 8 + voomstop + "\n"
     newconf.write postvoom
 
     # conf = File.open(conffile, 'w')
