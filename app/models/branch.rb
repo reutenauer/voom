@@ -45,7 +45,9 @@ class Branch
     Heading.order(:rank).each do |heading|
       newconf.puts "" unless heading.rank == 10
       newconf.puts "        ##{heading.title}"
-      Redirect.where(heading_id: heading.id).order(:source).each do |redirect|
+      Redirect.where(heading_id: heading.id).sort do |a, b|
+        a.source.downcase <=> b.source.downcase
+      end.each do |redirect|
         l = redirect.source.length
         padding = if l < 23 then ' ' * (23 - l) else ' ' end
         puts "DEBUG #{redirect.source} #{redirect.source.length}"
