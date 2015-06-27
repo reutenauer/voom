@@ -265,7 +265,7 @@ redirects = Redirect.create([
   { source: '/culturedebate', target: 'http://www.roh.org.uk/news/live-stream-discover-what-the-political-parties-have-to-say-about-arts-and-heritage-in-the-culture-debate', heading: digital },
   { source: '/dancers', target: 'http://www.roh.org.uk/about/the-royal-ballet/artists', heading: digital },
   { source: '/domingo', target: 'http://www.roh.org.uk/news/watch-placido-domingo-in-conversation-event-streamed-live-by-roh-on-12-october-2014', heading: digital },
-  { source: '/facebook              https://www.facebook.com/royaloperahouse', heading: digital },
+  { source: '/facebook', target:' https://www.facebook.com/royaloperahouse', heading: digital },
   { source: '/krolrogerlive', target: 'http://www.roh.org.uk/news/krol-roger-to-be-live-streamed-on-16-may-2015', heading: digital },
   { source: '/livestreaming', target: 'http://www.roh.org.uk/news/tags/live-stream', heading: digital },
   { source: '/operamachine', target: 'http://www.roh.org.uk/opera-machine', heading: digital },
@@ -322,7 +322,7 @@ redirects = Redirect.create([
 
   # Vanity - marketing
   { source: '/alicesurvey', target: 'http://www.researchnowsurveys.com/survey/VOP21031313001121CSPP/enter.asp', heading: marketing },
-  { source: '/aworldstage           https://www.youtube.com/playlist?list=PL8DF5BB8248AADFC9', heading: marketing },
+  { source: '/aworldstage', target: 'https://www.youtube.com/playlist?list=PL8DF5BB8248AADFC9', heading: marketing },
   { source: '/bolshoi', target: 'http://www.roh.org.uk/about/bolshoi', heading: marketing },
   { source: '/bpbigscreens', target: 'http://www.roh.org.uk/about/bp-big-screens', heading: marketing },
   { source: '/branding', target: 'http://www.roh.org.uk/for/press-and-communications/branding', heading: marketing },
@@ -351,7 +351,7 @@ redirects = Redirect.create([
   { source: '/theolympicjourney', target: 'http://www.roh.org.uk/about/the-olympic-journey', heading: marketing },
   { source: '/thering', target: 'http://www.roh.org.uk/about/the-ring', heading: marketing },
   { source: '/thurrocksummer', target: 'http://www.roh.org.uk/news/fused-2015-a-festival-of-choruses-and-costume-with-roh-thurrock', heading: marketing },
-  { source: '/worldstage            https://www.youtube.com/playlist?list=PL8DF5BB8248AADFC9', heading: marketing },
+  { source: '/worldstage', target: 'https://www.youtube.com/playlist?list=PL8DF5BB8248AADFC9', heading: marketing },
   { source: '/eurydice', target: 'http://www.roh.org.uk/productions/orphee-et-eurydice-by-hofesh-shechter-and-john-fulljames?utm_campaign=eurydice&utm_medium=marketing&utm_source=print', heading: marketing },
   { source: '/macbeth', target: 'http://www.roh.org.uk/productions/macbeth-by-ted-huffman?utm_campaign=macbeth&utm_medium=marketing&utm_source=print', heading: marketing },
   { source: '/littlebulb', target: 'http://www.roh.org.uk/productions/orpheus-by-alexander-scott?utm_campaign=littlebulb&utm_medium=marketing&utm_source=print', heading: marketing },
