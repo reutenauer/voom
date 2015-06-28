@@ -1,7 +1,12 @@
 - if @already_exists
   %h1 Short URL already exists
   %p
-    Sorry, the short URL you’ve requested already exists and points to #{@already_exists.target}.  Do you want to replace it with #{@redirect.target}?
-    = link_to "Yes", update_redirect_path(@already_exists, target: @redirect.target)
+    Sorry, the short URL you’ve requested (#{@redirect.source}) already exists and points to
+    = link_to @already_exists.target, @already_exists.target
+    Do you want to replace it with
+    = link_to @redirect.target, @redirect.target
+    ?
+    = link_to "Click here", update_redirect_path(@already_exists, target: @redirect.target)
+    to confirm.
 - else
   = render 'request_created'
