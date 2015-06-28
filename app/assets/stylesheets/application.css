@@ -20,11 +20,21 @@ body {
 }
 
 #main {
-  background: white;
+  /* background: white; */
   color: #333;
   padding: 20px;
-  width: 768px;
+  position: relative;
+  /* top: 59px; */ /* Also not that */
+  width: 968px;
   margin: 0px auto;
+}
+
+#topbar {
+  background: #C60C30;
+  /* height: 100px; */ /* Not that */
+}
+
+#mainbody {
 }
 
 :link, :visited {
