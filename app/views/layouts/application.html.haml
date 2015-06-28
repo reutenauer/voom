@@ -7,9 +7,9 @@
   = csrf_meta_tags
 %body>
 
-%div{id: "main"}
-  %div{id: "topbar"}
+#main
+  #topbar
     %a{title: "Royal Opera House home", href: "http://www.roh.org.uk"}
     %img{width: 64, height: 86, alt: "Royal Opera House brandmark", src: "http://roh.global.ssl.fastly.net/images/brandmark.png"}
-  %div{id: "mainbody"}
+  #mainbody
   = yield
