@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150627233550) do
+ActiveRecord::Schema.define(version: 20150628032030) do
 
   create_table "headings", force: :cascade do |t|
     t.string   "title"
@@ -23,10 +23,12 @@ ActiveRecord::Schema.define(version: 20150627233550) do
   create_table "redirects", force: :cascade do |t|
     t.string   "source"
     t.string   "target"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "heading_id"
     t.integer  "type_id"
+    t.string   "name"
+    t.string   "stakeholder"
   end
 
   create_table "types", force: :cascade do |t|
