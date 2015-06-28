@@ -1,0 +1,12 @@
+%h1 All redirects
+
+%table
+  %thead
+    %tr
+      %th Source
+      %th Target
+  %tbody
+    - @redirects.all.each do |redirect|
+      %tr
+        %td= redirect.source
+        %td= link_to redirect.target, redirect.target

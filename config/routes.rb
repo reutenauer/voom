@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  get '/', to: "urls#new"
-  post '/', to: "urls#create"
+  root to: "redirects#new"
+  resources :redirects, only: [:new, :create, :index]
 end

@@ -1,11 +1,13 @@
-class UrlsController < ApplicationController
+class RedirectsController < ApplicationController
   def new
+    @redirect = Redirect.new
   end
 
   def create
-    @source = params['url']['source']
-    @target = params['url']['target']
-    @name = params['url']['name']
-    @stakeholder = params['url']['stakeholder']
+    @redirect = Redirect.new(params[:redirect].permit(:source, :target, :name, :stakeholder))
+  end
+
+  def index
+    @redirects = Redirect.all
   end
 end
