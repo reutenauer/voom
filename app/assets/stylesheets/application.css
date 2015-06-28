@@ -13,3 +13,24 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  background: #DDD;
+  font-family: 'Gotham SSm A','Gotham SSm B','Helvetica Neue','Helvetica','Arial Unicode','Arial',sans-serif;
+}
+
+#main {
+  background: white
+  color: #333;
+  padding: 20px;
+  width: 768px;
+  margin: 0px auto;
+}
+
+:link, :visited {
+  color: #c60c30;
+}
+
+:link:hover, :visited:hover {
+  text-decoration: underline;
+}
