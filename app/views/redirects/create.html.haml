@@ -1,15 +1,5 @@
 %h1 Request created
-%p Congratulations!  You’ve just created a new branch with name <pre>#{@branch_name}</pre>
+%p Congratulations!  You’ve just created a new branch with name #{@branch_name} for the following redirection: #{@redirect.source} to #{@redirect.target}
 %p
   Developers can now create a
   = link_to "pull request", "http://stash.atlassian.roh.org.uk/projects/WEB/repos/server-configuration---content/pull-requests?create&targetBranch=refs%2Fheads%2Fvoom-base&sourceBranch=refs%2Fheads%2F#{@branch_name}"
-%h1 Parameters
-%p
-  Source:
-  = @redirect.source
-  Target:
-  = @redirect.target
-  Name:
-  = @redirect.name
-  Stakeholder:
-  = @redirect.stakeholder
