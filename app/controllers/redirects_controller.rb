@@ -4,8 +4,8 @@ class RedirectsController < ApplicationController
   end
 
   def create
-    @redirect = Redirect.new(params[:redirect].permit(:source, :target, :name, :stakeholder))
-    @branch = Branch.add_vanity_url(@redirect)
+    @redirect = Redirect.new(params[:redirect].permit(:source, :target, :name, :stakeholder).merge({ heading: Heading.find_by_title("added by the Voom"), type: Type.find_by_status_code(301) }))
+    @branch_name = Branch.new.add_vanity_url(@redirect)
   end
 
   def index
