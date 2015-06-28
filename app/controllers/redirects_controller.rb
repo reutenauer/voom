@@ -5,6 +5,7 @@ class RedirectsController < ApplicationController
 
   def create
     @redirect = Redirect.new(params[:redirect].permit(:source, :target, :name, :stakeholder))
+    @branch = Branch.add_vanity_url(@redirect)
   end
 
   def index
