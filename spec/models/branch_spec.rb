@@ -10,7 +10,8 @@ describe Branch do
     # end
 
     it "works" do
-      Branch.add_vanity_url("/flyingpigs", "http://www.roh.org.uk/productions/the-flying-pigs-by-ebenezer-scrooge")
+      redirect = Redirect.new(source: "/flyingpigs", target: "http://www.roh.org.uk/productions/the-flying-pigs-by-ebenezer-scrooge", name: "My name", stakeholder: "The Big Cheese", heading: Heading.find_by_title("added by the Voom"), type: Type.find_by_status_code(301))
+      Branch.add_vanity_url(redirect)
     end
   end
 end

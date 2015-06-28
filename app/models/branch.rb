@@ -7,7 +7,8 @@ class Branch
   INVOOM = 1
   POSTVOOM = 2
 
-  def self.add_vanity_url(source, target)
+  def self.add_vanity_url(redirect)
+    redirect.save!
     puts @@tmpdir
     FileUtils.chdir @@tmpdir
     `git clone -b voom-base ssh://git@stash.atlassian.roh.org.uk/web/server-configuration---content.git`
