@@ -49,9 +49,19 @@ class Branch
         a.source.downcase <=> b.source.downcase
       end.each do |redirect|
         l = redirect.source.length
-        padding = if l < 23 then ' ' * (23 - l) else ' ' end
+        if heading.rank < 80
+          padding = if l < 23 then ' ' * (23 - l) else ' ' end
+        else
+          padding = " "
+        end
         puts "DEBUG #{redirect.source} #{redirect.source.length}"
-        newconf.puts "        Redirect 301 #{redirect.source}#{padding}#{redirect.target}"
+        type = redirect.type.name
+        status = redirect.type.status_code
+        if type == 'permanent' || type == 'temporary'
+          newconf.puts "        Redirect #{status} #{redirect.source}#{padding}#{redirect.target}"
+        elsif type == 'gone'
+          newconf.puts "        Redirect gone #{redirect.source}"
+        end
       end
     end
     newconf.write ' ' * 8 + voomstop + "\n"
