@@ -39,6 +39,7 @@ body {
 
 :link, :visited {
   color: #c60c30;
+  text-decoration: none;
 }
 
 :link:hover, :visited:hover {
