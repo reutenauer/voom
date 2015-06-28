@@ -1,10 +1,13 @@
 - if @already_exists
   %h1 Short URL already exists
-  %p Sorry, the short URL you’ve requested already exists and points to #{@already_exists.target}.  Do you want to replace it with #{@redirect.target}?
-  - @redirect = Redirect.new(source: @redirect.source, target: @redirect.target, name: @redirect.name, stakeholder: @redirect.stakeholder)
-  = form_for @redirect do |f|
+  %p
+    Sorry, the short URL you’ve requested already exists and points to #{@already_exists.target}.  Do you want to replace it with #{@redirect.target}?
+    = link_to "Yes", update_redirect_path(@already_exists, target: @redirect.target)
+  = form_for :redirect do |f|
     %input{type: "hidden", name: "source", value: @redirect.source}
     %input{type: "hidden", name: "target", value: @redirect.target}
+    %input{type: "hidden", name: "name", value: @redirect.name}
+    %input{type: "hidden", name: "stakeholder", value: @redirect.stakeholder}
     = f.submit "Yes"
 - else
   %h1 Request created
