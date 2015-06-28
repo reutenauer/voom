@@ -9,7 +9,8 @@ headings = Heading.create([
   { title: "hacks - orphaned events", rank: 80 },
   { title: "hacks", rank: 90 },
   { title: "restructures - people", rank: 100 },
-  { title: "restructures - current site", rank: 110 }
+  { title: "restructures - current site", rank: 110 },
+  { title: "added by the Voom", rank: 120 }
 ])
 
 prod = Heading.find(1)
@@ -23,6 +24,7 @@ orphaned = Heading.find(8)
 hacks = Heading.find(9)
 people = Heading.find(10)
 curr = Heading.find(11)
+voom = Heading.find(12)
 
 types = Type.create([
   { status_code: 301, name: :permanent },

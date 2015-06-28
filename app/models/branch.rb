@@ -54,7 +54,6 @@ class Branch
         else
           padding = " "
         end
-        puts "DEBUG #{redirect.source} #{redirect.source.length}"
         type = redirect.type.name
         status = redirect.type.status_code
         if type == 'permanent' || type == 'temporary'
