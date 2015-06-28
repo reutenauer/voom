@@ -3,15 +3,5 @@
   %p
     Sorry, the short URL you’ve requested already exists and points to #{@already_exists.target}.  Do you want to replace it with #{@redirect.target}?
     = link_to "Yes", update_redirect_path(@already_exists, target: @redirect.target)
-  = form_for :redirect do |f|
-    %input{type: "hidden", name: "source", value: @redirect.source}
-    %input{type: "hidden", name: "target", value: @redirect.target}
-    %input{type: "hidden", name: "name", value: @redirect.name}
-    %input{type: "hidden", name: "stakeholder", value: @redirect.stakeholder}
-    = f.submit "Yes"
 - else
-  %h1 Request created
-  %p Congratulations!  You’ve just created a new branch with name #{@branch_name} for the following redirection: #{@redirect.source} to #{@redirect.target}
-  %p
-    Developers can now create a
-    = link_to "pull request", "http://stash.atlassian.roh.org.uk/projects/WEB/repos/server-configuration---content/pull-requests?create&targetBranch=refs%2Fheads%2Fvoom-base&sourceBranch=refs%2Fheads%2F#{@branch_name}"
+  = render 'request_created'
