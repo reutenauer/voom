@@ -1,15 +1,16 @@
-%h1 All redirects
+%h1 All redirects (#{@count} altogether)
 
 - @redirects.each do |heading, redirects_by_heading|
-  %h2= heading.title
+  - if redirects_by_heading.count > 0
+    %h2= heading.title (#{redirects_by_heading.count})
 
-  %table
-    %thead
-      %tr
-        %th Source
-        %th Target
-    %tbody
-      - redirects_by_heading.each do |redirect|
+    %table
+      %thead
         %tr
-          %td= redirect.source
-          %td= link_to redirect.target, redirect.target
+          %th Source
+          %th Target
+      %tbody
+        - redirects_by_heading.each do |redirect|
+          %tr
+            %td= redirect.source
+            %td= link_to redirect.target, redirect.target

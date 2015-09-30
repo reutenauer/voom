@@ -12,9 +12,12 @@ class RedirectsController < ApplicationController
   def index
     # Redirect.all
     @redirects = { }
+    @count = 0
     Heading.order(:id).each do |heading|
       @redirects[heading] = Redirect.where(heading: heading).order(:name)
+      @count += @redirects[heading].count
     end
+    # @count = @redirects.inject { |sum, head, redirs| sum + redirs.count }
   end
 
   def update
