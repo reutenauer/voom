@@ -10,7 +10,7 @@ class RedirectsController < ApplicationController
   end
 
   def index
-    @redirects = Redirect.group(:heading)
+    @redirects = Redirect.all
   end
 
   def update
