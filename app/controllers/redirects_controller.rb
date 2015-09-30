@@ -10,7 +10,11 @@ class RedirectsController < ApplicationController
   end
 
   def index
-    @redirects = Redirect.all
+    # Redirect.all
+    @redirects = { }
+    Heading.order(:id).each do |heading|
+      @redirects[heading] = Redirect.where(heading: heading).order(:name)
+    end
   end
 
   def update
