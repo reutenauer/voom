@@ -16,6 +16,4 @@
 !/log/.keep
 /tmp
 
-/config/secrets.yml
 /backups
-/public/assets

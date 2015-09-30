@@ -73,9 +73,9 @@ class Branch
     # conf = File.open(conffile, 'w')
     # conf.puts "        Redirect 301 #{source}   #{target}"
     # conf.close
-    # system("git diff")
+    system("git diff")
     `git commit -am 'Commit from the Voom.'`
-    puts `git push -u origin #{branch}`
+    # puts `git push -u origin #{branch}`
     branch
   end
 end
