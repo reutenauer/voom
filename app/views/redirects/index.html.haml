@@ -2,7 +2,7 @@
 
 - @redirects.each do |heading, redirects_by_heading|
   - if redirects_by_heading.count > 0
-    %h2= heading.title (#{redirects_by_heading.count})
+    %h2 #{heading.title} (#{redirects_by_heading.count})
 
     %table
       %thead
